@@ -1,72 +1,80 @@
 package adintervall;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class NormalInterval implements Interval{
 
-    private Double lowerbound,upperbound;
+    private double lowerbound,upperbound;
     
-    NormalInterval(Double d1, Double d2){
+    NormalInterval(double d1, double d2){
      this.lowerbound = d1;
      this.upperbound = d2;
     }
-    
-  
+
+    public static boolean isNaN(double v)
+    {
+            return (v != v);
+    }
     
     @Override
-    public Double getLowerBound() {
+    public double getLowerBound() {
         return this.lowerbound;
     }
 
     @Override
-    public Double getUpperBound() {
+    public double getUpperBound() {
         return this.upperbound;
     }
 
     @Override
-    public Double length() {
+    public double length() {
         return this.upperbound-this.lowerbound;
     }
 
     @Override
-    public Boolean contains(Double value) {
-        if(value == null || Double.isNaN(value)){
+    public Boolean contains(double value) {
+        if(value != value){
             return false;
         }
         return this.lowerbound<=value && value<=this.upperbound;           
     }
 
     @Override
-    public Interval plus(Interval other) {
-       if (other == null)
-           return Interval.NaI;
-       ArrayList<Double> al = new ArrayList<>(Arrays.asList(new Double[] {lowerbound+other.getLowerBound(), lowerbound+other.getUpperBound(), 
-                                                                          upperbound+other.getLowerBound(), upperbound+other.getUpperBound()}));
-        Collections.sort(al);        
-        return FactoryInterval.createInterval(al.get(0),al.get(al.size() - 1));
+    public Interval plus(Interval other) 
+    {
+        if (other == null)
+        {
+            return Interval.NaI;
+        }
+       
+        double[] d = {lowerbound+other.getLowerBound(), lowerbound+other.getUpperBound(), upperbound+other.getLowerBound(), upperbound+other.getUpperBound()};
+        Arrays.sort(d);
+
+        return FactoryInterval.createInterval(d[0],d[d.length -1]);
     }
 
     @Override
     public Interval minus(Interval other) {
         if (other == null)
+        {
             return Interval.NaI;
-        ArrayList<Double> al = new ArrayList<>(Arrays.asList(new Double[] {lowerbound-other.getLowerBound(), lowerbound-other.getUpperBound(), 
-                                                                           upperbound-other.getLowerBound(),upperbound-other.getUpperBound()}));
-        Collections.sort(al);
+        }
         
-        return FactoryInterval.createInterval(al.get(0),al.get(al.size() - 1));
+        double[] d = {lowerbound-other.getLowerBound(), lowerbound-other.getUpperBound(), upperbound-other.getLowerBound(),upperbound-other.getUpperBound()};
+        Arrays.sort(d);
+
+        return FactoryInterval.createInterval(d[0],d[d.length -1]);
     }
 
     @Override
     public Interval multi(Interval other) {
         if (other == null)
             return Interval.NaI;
-        ArrayList<Double> al = new ArrayList<>(Arrays.asList(new Double[] {lowerbound*other.getLowerBound(), lowerbound*other.getUpperBound(), 
-                                                                           upperbound*other.getLowerBound(), upperbound*other.getUpperBound()}));
-        Collections.sort(al);        
-        return FactoryInterval.createInterval(al.get(0),al.get(al.size() - 1));
+       
+        double[] d = {lowerbound*other.getLowerBound(), lowerbound*other.getUpperBound(), upperbound*other.getLowerBound(), upperbound*other.getUpperBound()};
+        Arrays.sort(d);
+
+        return FactoryInterval.createInterval(d[0],d[d.length -1]);
     }
 
     @Override
@@ -79,17 +87,17 @@ public class NormalInterval implements Interval{
     }
 
     @Override
-    public Interval plus(Double other) {
+    public Interval plus(double other) {
         return this.plus(FactoryInterval.createInterval(other, other));
     }
 
     @Override
-    public Interval minus(Double other) {
+    public Interval minus(double other) {
          return this.minus(FactoryInterval.createInterval(other, other));
     }
 
     @Override
-    public Interval multi(Double other) {
+    public Interval multi(double other) {
          return this.multi(FactoryInterval.createInterval(other, other));
     }
     
@@ -108,7 +116,7 @@ public class NormalInterval implements Interval{
             return (this.lowerbound == (double) o && this.upperbound == (double) o);
         else if (o instanceof Interval) {
             Interval other = (Interval) o;
-            return (this.lowerbound.equals(other.getLowerBound()) && this.upperbound.equals(other.getUpperBound()));
+            return (this.lowerbound == other.getLowerBound() && this.upperbound == other.getUpperBound());
         } else
             return false;
     }

@@ -1,8 +1,7 @@
 package adintervall;
 
-import static org.junit.Assert.*;
 import java.util.Random;
-
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 
@@ -24,33 +23,33 @@ public class IntervalTest {
     @Test
     public void get_bounds_test() {
         System.out.println("testing getBounds()...");
-        assertTrue(Interval.NaI.getLowerBound().equals(Double.NaN));
-        assertTrue(Interval.NaI.getUpperBound().equals(Double.NaN));
-        assertTrue(iNegPos.getLowerBound().equals(-5d));
-        assertTrue(iNegPos.getUpperBound().equals(5d));
+        assertFalse(Interval.NaI.getLowerBound() == Interval.NaN);
+        assertFalse(Interval.NaI.getUpperBound() == Interval.NaN);
+        assertTrue(iNegPos.getLowerBound() == -5d);
+        assertTrue(iNegPos.getUpperBound() == 5d);
     }
     
     @Test
     public void testFactory() {
         //NaI Intervalle
         System.out.println("testing createInterval()...");
-        assertTrue(nai.equals(Int(Double.NaN)));
-        assertEquals(nai,Int(null));
-        assertEquals(nai,Int(null,null));
+        assertTrue(nai.equals(Int(NormalInterval.NaN)));
+        assertEquals(nai,Int(Interval.NaN)); // ?
+        assertEquals(nai,Int(Interval.NaN,Interval.NaN)); // ?
         assertEquals(nai,Int(Double.NaN));
         assertEquals(nai,Int(Double.NaN, 0d));
         assertEquals(nai,Int(0d, Double.NaN));
         assertEquals(nai,Int(2d, 1d));
-        assertEquals(nai,Int(Double.POSITIVE_INFINITY, Double.NEGATIVE_INFINITY));
-        assertEquals(nai,Int(Double.POSITIVE_INFINITY, Double.NaN));
-        assertEquals(nai,Int(Double.NEGATIVE_INFINITY, Double.NaN));
+        assertEquals(nai,Int(Interval.POSITIVE_INFINITY, Interval.NEGATIVE_INFINITY));
+        assertEquals(nai,Int(Interval.POSITIVE_INFINITY, Double.NaN));
+        assertEquals(nai,Int(Interval.NEGATIVE_INFINITY, Double.NaN));
         assertTrue(Int(0d,0d) == Interval.zeroInterval);
         assertTrue(Int(1d,1d) == Interval.oneInterval);
         assertTrue(Int(5d,-5d) == Interval.NaI);
         assertTrue(Int(Double.NaN,5d) == Interval.NaI);
         assertTrue(Int(-5d,Double.NaN) == Interval.NaI);
         assertTrue(Int(Double.NaN,Double.NaN) == Interval.NaI);
-        assertTrue(Int(Double.NEGATIVE_INFINITY,Double.POSITIVE_INFINITY) == Interval.realInterval);
+        assertTrue(Int(Interval.NEGATIVE_INFINITY,Interval.POSITIVE_INFINITY) == Interval.realInterval);
     }
 
     @Test
@@ -59,16 +58,16 @@ public class IntervalTest {
         assertFalse(nai.contains(Double.NaN)); //Nan is a not defined number so NaN != NaN
         assertTrue(one.contains(1d));
         assertTrue(zero.contains(0d));
-        assertTrue(real.contains(Double.NEGATIVE_INFINITY));
-        assertTrue(real.contains(Double.POSITIVE_INFINITY));
+        assertTrue(real.contains(Interval.NEGATIVE_INFINITY));
+        assertTrue(real.contains(Interval.POSITIVE_INFINITY));
         assertFalse(real.contains(Double.NaN));
 
         for (int c = 0; c < 100000; ++c) {
-            double d = RandomDouble();
+            double d = Randomdouble();
             assertTrue(real.contains(d));
             assertFalse(nai.contains(d));
             assertTrue(Int(d).contains(d));
-            double e = RandomDouble();
+            double e = Randomdouble();
             if (e != d)
                 assertFalse(Int(d).contains(e));
         }
@@ -108,25 +107,25 @@ public class IntervalTest {
     @Test
     public void testLength() {
         System.out.println("testing length()...");
-        assertTrue(Double.isNaN(nai.length()));
+        assertTrue(NormalInterval.isNaN(nai.length()));
         assertTrue(zero.length() == 0d);
         assertTrue(one.length() == 0d);
-        assertTrue(real.length() == Double.POSITIVE_INFINITY);
+        assertTrue(real.length() == Interval.POSITIVE_INFINITY);
 
         for(int c = 0; c < 100000; ++c) {
-            assertTrue(Int(RandomDouble()).length() == 0d);
+            assertTrue(Int(Randomdouble()).length() == 0d);
         }   
         
-        assertTrue(Interval.NaI.length().equals(Double.NaN));
-        assertTrue(Int(5d).length().equals(0d));
-        assertTrue(iPos.length().equals(4d));
+        assertFalse(Interval.NaI.length() == Interval.NaN);
+        assertTrue(Int(5d).length() == 0d);
+        assertTrue(iPos.length() == 4d);
     }
 
     @Test
     public void testPlus() {
         System.out.println("testing plus()...");
         //NaI-ergebnisse
-        assertEquals(nai, Int(Double.NEGATIVE_INFINITY, 0d).plus(Int(0d, Double.POSITIVE_INFINITY)));
+        assertEquals(nai, Int(Interval.NEGATIVE_INFINITY, 0d).plus(Int(0d, Interval.POSITIVE_INFINITY)));
         for(int i = 0; i < 100000; ++i) {
             assertEquals(nai, RandomInt().plus(nai));
             assertEquals(nai, nai.plus(RandomInt()));
@@ -142,7 +141,7 @@ public class IntervalTest {
         }       
         
         assertEquals(iPos.plus(iNeg),Int(-4d, 4d));
-        assertEquals(Int(Double.NEGATIVE_INFINITY,-1d).plus(Int(1d,Double.POSITIVE_INFINITY)), Interval.NaI);
+        assertEquals(Int(Interval.NEGATIVE_INFINITY,-1d).plus(Int(1d,Interval.POSITIVE_INFINITY)), Interval.NaI);
         assertEquals(iNegPos.plus(Interval.NaI), Interval.NaI);
         assertEquals(iNeg.plus(Interval.zeroInterval), iNeg);
         assertEquals(Interval.zeroInterval.plus(iPos), iPos);
@@ -153,8 +152,8 @@ public class IntervalTest {
         System.out.println("testing minus()...");
 
         //Nai Ergebnisse
-        assertEquals(nai, Int(Double.NEGATIVE_INFINITY).minus(Int(Double.NEGATIVE_INFINITY)));
-        assertEquals(nai, Int(Double.POSITIVE_INFINITY).minus(Int(Double.POSITIVE_INFINITY)));
+        assertEquals(nai, Int(Interval.NEGATIVE_INFINITY).minus(Int(Interval.NEGATIVE_INFINITY)));
+        assertEquals(nai, Int(Interval.POSITIVE_INFINITY).minus(Int(Interval.POSITIVE_INFINITY)));
         for(int i = 0; i < 100000; i++){
             assertEquals(nai, RandomInt().minus(nai));
             assertEquals(nai, nai.minus(RandomInt()));
@@ -171,7 +170,7 @@ public class IntervalTest {
         }
         
         assertEquals(iPos.minus(iNeg),Int(2d, 10d));
-        assertEquals(Int(Double.NEGATIVE_INFINITY,-1d).minus(Int(1d,Double.POSITIVE_INFINITY)), Int(Double.NEGATIVE_INFINITY,-2d));
+        assertEquals(Int(Interval.NEGATIVE_INFINITY,-1d).minus(Int(1d,Interval.POSITIVE_INFINITY)), Int(Interval.NEGATIVE_INFINITY,-2d));
         assertEquals(iNegPos.minus(Interval.NaI), Interval.NaI);
         assertEquals(iNeg.minus(Interval.zeroInterval), iNeg);
         assertEquals(Interval.zeroInterval.minus(iPos), iNeg);
@@ -182,26 +181,26 @@ public class IntervalTest {
             System.out.println("testing mul()...");
 
             //NaI-Ergebnisse
-            assertEquals(nai, Int(0.0).multi(Int(Double.POSITIVE_INFINITY)));
-            assertEquals(nai, Int(0.0).multi(Int(Double.NEGATIVE_INFINITY)));
-            assertEquals(nai, Int(Double.POSITIVE_INFINITY).multi(Int(0.0)));
-            assertEquals(nai, Int(Double.NEGATIVE_INFINITY).multi(Int(0.0)));
-            assertEquals(nai, Int(Double.NEGATIVE_INFINITY).multi(nai));
-            assertEquals(nai, Int(Double.POSITIVE_INFINITY).multi(nai));
+            assertEquals(nai, Int(0.0).multi(Int(Interval.POSITIVE_INFINITY)));
+            assertEquals(nai, Int(0.0).multi(Int(Interval.NEGATIVE_INFINITY)));
+            assertEquals(nai, Int(Interval.POSITIVE_INFINITY).multi(Int(0.0)));
+            assertEquals(nai, Int(Interval.NEGATIVE_INFINITY).multi(Int(0.0)));
+            assertEquals(nai, Int(Interval.NEGATIVE_INFINITY).multi(nai));
+            assertEquals(nai, Int(Interval.POSITIVE_INFINITY).multi(nai));
             assertEquals(nai, nai.multi(nai));
 
 
 
             //Infinity Ergebnisse
-            assertEquals(real, Int(Double.NEGATIVE_INFINITY,Double.POSITIVE_INFINITY).multi(Int(Double.NEGATIVE_INFINITY,Double.POSITIVE_INFINITY)));
-            assertEquals(real, Int(-1d, Double.POSITIVE_INFINITY).multi(Int(Double.NEGATIVE_INFINITY)));
-            assertEquals(real, Int(-1d,Double.POSITIVE_INFINITY).multi(Int(Double.NEGATIVE_INFINITY)));
-            assertEquals(real, Int(-1d,Double.POSITIVE_INFINITY).multi(Double.POSITIVE_INFINITY));
-            assertEquals(Int(Double.POSITIVE_INFINITY), Int(1d, Double.POSITIVE_INFINITY).multi(Double.POSITIVE_INFINITY));
-            assertEquals(Int(Double.POSITIVE_INFINITY), Int(Double.NEGATIVE_INFINITY, -1d).multi(Int(Double.NEGATIVE_INFINITY)));
-            assertEquals(real, Int(Double.NEGATIVE_INFINITY, 1d).multi(Int(Double.NEGATIVE_INFINITY)));
-            assertEquals(Int(Double.NEGATIVE_INFINITY), Int(Double.NEGATIVE_INFINITY, -1d).multi(Double.POSITIVE_INFINITY));
-            assertEquals(real, Int(Double.NEGATIVE_INFINITY, 1d).multi(Int(Double.POSITIVE_INFINITY)));
+            assertEquals(real, Int(Interval.NEGATIVE_INFINITY,Interval.POSITIVE_INFINITY).multi(Int(Interval.NEGATIVE_INFINITY,Interval.POSITIVE_INFINITY)));
+            assertEquals(real, Int(-1d, Interval.POSITIVE_INFINITY).multi(Int(Interval.NEGATIVE_INFINITY)));
+            assertEquals(real, Int(-1d,Interval.POSITIVE_INFINITY).multi(Int(Interval.NEGATIVE_INFINITY)));
+            assertEquals(real, Int(-1d,Interval.POSITIVE_INFINITY).multi(Interval.POSITIVE_INFINITY));
+            assertEquals(Int(Interval.POSITIVE_INFINITY), Int(1d, Interval.POSITIVE_INFINITY).multi(Interval.POSITIVE_INFINITY));
+            assertEquals(Int(Interval.POSITIVE_INFINITY), Int(Interval.NEGATIVE_INFINITY, -1d).multi(Int(Interval.NEGATIVE_INFINITY)));
+            assertEquals(real, Int(Interval.NEGATIVE_INFINITY, 1d).multi(Int(Interval.NEGATIVE_INFINITY)));
+            assertEquals(Int(Interval.NEGATIVE_INFINITY), Int(Interval.NEGATIVE_INFINITY, -1d).multi(Interval.POSITIVE_INFINITY));
+            assertEquals(real, Int(Interval.NEGATIVE_INFINITY, 1d).multi(Int(Interval.POSITIVE_INFINITY)));
             assertEquals(real, real.multi(real));
 
             //Neutrales Element
@@ -213,7 +212,7 @@ public class IntervalTest {
             }
             
             assertEquals(iPos.multi(iNeg), Int(-25d, -1d));
-            assertEquals(Int(Double.NEGATIVE_INFINITY,-1d).multi(Int(1d,Double.POSITIVE_INFINITY)), Int(Double.NEGATIVE_INFINITY,-1d));
+            assertEquals(Int(Interval.NEGATIVE_INFINITY,-1d).multi(Int(1d,Interval.POSITIVE_INFINITY)), Int(Interval.NEGATIVE_INFINITY,-1d));
             assertEquals(iNegPos.multi(Interval.NaI), Interval.NaI);
             assertEquals(iNeg.multi(Interval.oneInterval), iNeg);
             assertEquals(Interval.oneInterval.multi(iPos), iPos);
@@ -227,27 +226,27 @@ public class IntervalTest {
             System.out.println("testing div()...");
 
             //NaI Ergebnisse
-            assertEquals(nai, Int(Double.POSITIVE_INFINITY).div(Int(Double.POSITIVE_INFINITY)));
-            assertEquals(nai, Int(Double.NEGATIVE_INFINITY).div(Int(Double.NEGATIVE_INFINITY)));
-            assertEquals(nai, Int(Double.NEGATIVE_INFINITY).div(Int(Double.POSITIVE_INFINITY)));
-            assertEquals(nai, Int(Double.POSITIVE_INFINITY).div(Int(Double.NEGATIVE_INFINITY)));
+            assertEquals(nai, Int(Interval.POSITIVE_INFINITY).div(Int(Interval.POSITIVE_INFINITY)));
+            assertEquals(nai, Int(Interval.NEGATIVE_INFINITY).div(Int(Interval.NEGATIVE_INFINITY)));
+            assertEquals(nai, Int(Interval.NEGATIVE_INFINITY).div(Int(Interval.POSITIVE_INFINITY)));
+            assertEquals(nai, Int(Interval.POSITIVE_INFINITY).div(Int(Interval.NEGATIVE_INFINITY)));
             assertEquals(nai, zero.div(zero));
-            assertEquals(nai, nai.div(Int(Double.POSITIVE_INFINITY)));
-            assertEquals(nai, nai.div(Int(Double.NEGATIVE_INFINITY)));
+            assertEquals(nai, nai.div(Int(Interval.POSITIVE_INFINITY)));
+            assertEquals(nai, nai.div(Int(Interval.NEGATIVE_INFINITY)));
             assertEquals(nai, nai.div(nai));
             assertEquals(nai, nai.div(zero));
             assertEquals(nai, nai.div(one));
 
 
             //Infinity Ergebnisse
-            assertEquals(Int(Double.POSITIVE_INFINITY), Int(Double.NEGATIVE_INFINITY).div(Int(-1d)));
-            assertEquals(real, Int(Double.NEGATIVE_INFINITY).div(zero));
-            assertEquals(Int(Double.NEGATIVE_INFINITY), Int(Double.NEGATIVE_INFINITY).div(one));
+            assertEquals(Int(Interval.POSITIVE_INFINITY), Int(Interval.NEGATIVE_INFINITY).div(Int(-1d)));
+            assertEquals(real, Int(Interval.NEGATIVE_INFINITY).div(zero));
+            assertEquals(Int(Interval.NEGATIVE_INFINITY), Int(Interval.NEGATIVE_INFINITY).div(one));
             assertEquals(real, Int(-1d).div(zero));
             assertEquals(real, Int(1d).div(zero));
-            assertEquals(Int(Double.NEGATIVE_INFINITY), Int(Double.POSITIVE_INFINITY).div(Int(-1d)));
-            assertEquals(real, Int(Double.POSITIVE_INFINITY).div(zero));
-            assertEquals(Int(Double.POSITIVE_INFINITY), Int(Double.POSITIVE_INFINITY).div(one));
+            assertEquals(Int(Interval.NEGATIVE_INFINITY), Int(Interval.POSITIVE_INFINITY).div(Int(-1d)));
+            assertEquals(real, Int(Interval.POSITIVE_INFINITY).div(zero));
+            assertEquals(Int(Interval.POSITIVE_INFINITY), Int(Interval.POSITIVE_INFINITY).div(one));
 
             //Neutrales Element
             for(int i = 0; i < 10000; i++){
@@ -255,7 +254,7 @@ public class IntervalTest {
                 if (vi != nai) {
                     assertEquals(vi, vi.div(one));
                     assertEquals(nai, vi.div(nai));
-                    if (vi.getLowerBound().equals(0d) || vi.getUpperBound().equals(0d))
+                    if (vi.getLowerBound()==  0d || vi.getUpperBound() == 0d)
                         assertEquals(nai, vi.div(zero));
                     else
                         assertEquals(real, vi.div(zero));
@@ -263,7 +262,7 @@ public class IntervalTest {
             }
             
             assertEquals(iPos.div(iNeg), Int(-5d, -0.2d));
-            assertEquals(Int(Double.NEGATIVE_INFINITY,-1d).div(Int(1d,Double.POSITIVE_INFINITY)), Interval.NaI);
+            assertEquals(Int(Interval.NEGATIVE_INFINITY,-1d).div(Int(1d,Interval.POSITIVE_INFINITY)), Interval.NaI);
             assertEquals(iNegPos.div(Interval.NaI), Interval.NaI);
             assertEquals(iNeg.div(Interval.oneInterval), iNeg);
             assertEquals(Interval.oneInterval.div(iPos), Int(0.2d, 1d));
@@ -272,11 +271,11 @@ public class IntervalTest {
             assertEquals(Interval.zeroInterval.div(Interval.realInterval), Interval.NaI);
         }
 
-    private Interval Int(Double a, Double b) {
+    private Interval Int(double a, double b) {
         return FactoryInterval.createInterval(a,b);
     }
 
-    private Interval Int(Double a) {
+    private Interval Int(double a) {
         return Int(a,a);
     }
 
@@ -284,7 +283,7 @@ public class IntervalTest {
         return Int((double) rand.nextInt(10000) - 5000,(double) rand.nextInt(100000));
     }
 
-    private double RandomDouble() {
+    private double Randomdouble() {
         return (double) rand.nextInt(100000) - 50000;
     }
 
