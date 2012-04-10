@@ -114,7 +114,7 @@ public class NormalInterval implements Interval{
 
     @Override
     public Interval minusKom(double other) {
-        return this.minus(FactoryInterval.createInterval(other, other));
+        return FactoryInterval.createInterval(other, other).minus(this);
     }
 
     @Override
