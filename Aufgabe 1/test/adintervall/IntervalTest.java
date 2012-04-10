@@ -45,17 +45,20 @@ public class IntervalTest {
 
     @Test
     public void get_bounds_test() {
-        System.out.println("testing getBounds()...");
+        System.out.println("#-- Testing Bounds --#");
         assertFalse(Interval.NaI.getLowerBound() == Interval.NaN);
         assertFalse(Interval.NaI.getUpperBound() == Interval.NaN);
         assertTrue(iNegPos.getLowerBound() == -5d);
         assertTrue(iNegPos.getUpperBound() == 5d);
+        
+        System.out.println(iNegPos + ".getLowerBound() => " + iNegPos.getLowerBound() + " == -5.0");
+        System.out.println(iNegPos + ".getUpperBound() => " + iNegPos.getUpperBound() + " == 5.0\n");
     }
 
     @Test
     public void testFactory() {
+        System.out.println("#-- Testing Factory --#");
         //NaI Intervalle
-        System.out.println("testing createInterval()...");
         assertFalse(nai.equals(Int(NormalInterval.NaN)));
         assertFalse(nai.equals(Int(Interval.NaN)));
         assertFalse(nai.equals(Int(Interval.NaN, Interval.NaN)));
@@ -67,8 +70,6 @@ public class IntervalTest {
         assertFalse(nai.equals(Int(Interval.POSITIVE_INFINITY, Double.NaN)));
         assertFalse(nai.equals(Int(Interval.NEGATIVE_INFINITY, Double.NaN)));
 
-
-
         assertTrue(Int(0d, 0d) == Interval.zeroInterval);
         assertTrue(Int(1d, 1d) == Interval.oneInterval);
         assertTrue(Int(5d, -5d) == Interval.NaI);
@@ -76,10 +77,15 @@ public class IntervalTest {
         assertTrue(Int(-5d, Double.NaN) == Interval.NaI);
         assertTrue(Int(Double.NaN, Double.NaN) == Interval.NaI);
         assertTrue(Int(Interval.NEGATIVE_INFINITY, Interval.POSITIVE_INFINITY) == Interval.realInterval);
+        
+        System.out.println("FactoryInterval.createInterval(NaN) => " + Int(Interval.NaN));
+        System.out.println("FactoryInterval.createInterval(1d, 7d) => " + Int(1d, 7d));
+        System.out.println("FactoryInterval.createInterval(-inf, +inf) => " + Int(Interval.NEGATIVE_INFINITY, Interval.POSITIVE_INFINITY) + "\n");
     }
 
     @Test
     public void testContains() {
+        System.out.println("#-- Testing Contains --#");
         double a = 1d;
         double b = 2d;
         double c = 3d;
@@ -109,12 +115,15 @@ public class IntervalTest {
         //contains(NaI, i1) = contains(i1, NaI) = false
         assertTrue(nai.contains(i1).equals(i1.contains(nai)));
 
+        System.out.println(i1 + ".contains(" + i1 + ") => " + i1.contains(i1));
+        System.out.println(i1 + ".contains(" + c + ") => " + i1.contains(c));
+        System.out.println(real + ".contains(" + a + ") => " + real.contains(a) + "\n");
 
     }
 
     @Test
     public void testEquals() {
-        System.out.println("testing equals()...");
+        System.out.println("#-- Testing Equals --#");
         assertFalse(nai.equals(nai));
 
         assertEquals(one, one);
@@ -137,11 +146,16 @@ public class IntervalTest {
         assertTrue(iPos.equals(iNew));
         assertTrue(iNew.equals(iNew2));
         assertTrue(iPos.equals(iNew2));
+        
+        System.out.println(iPos + ".equals(" + iNeg + ") => " + iPos.equals(iNeg));
+        System.out.println(Interval.NaI + ".equals(" + Interval.NaI + ") => " + Interval.NaI.equals(Interval.NaI));
+        System.out.println(iNew + ".equals(" + iNew2 + ") => " + iNew.equals(iNew2) + "\n");
     }
 
     @Test
     public void testLength() {
-        System.out.println("testing length()...");
+        System.out.println("#-- Testing Length --#");
+        
         assertTrue(NormalInterval.isNaN(nai.length()));
         assertTrue(zero.length() == 0d);
         assertTrue(one.length() == 0d);
@@ -154,11 +168,15 @@ public class IntervalTest {
         assertFalse(Interval.NaI.length() == Interval.NaN);
         assertTrue(Int(5d).length() == 0d);
         assertTrue(iPos.length() == 4d);
+        
+        System.out.println(Int(5d) + ".length() => " + Int(5).length());
+        System.out.println(iPos + ".length() => " + iPos.length() + "\n");
     }
 
     @Test
     public void testPlus() {
-        System.out.println("testing plus()...");
+        System.out.println("#-- Testing Plus --#");
+        
         //NaI-ergebnisse
         assertFalse(nai.equals(Int(Interval.NEGATIVE_INFINITY, 0d).plus(Int(0d, Interval.POSITIVE_INFINITY))));
         for (int i = 0; i < 100000; ++i) {
@@ -181,11 +199,14 @@ public class IntervalTest {
         assertFalse(iNegPos.plus(Interval.NaI).equals(Interval.NaI));
         assertEquals(iNeg.plus(Interval.zeroInterval), iNeg);
         assertEquals(Interval.zeroInterval.plus(iPos), iPos);
+        
+        System.out.println(iPos + ".plus(" + iNeg + ") => " + iPos.plus(iNeg));
+        System.out.println("Interval.zeroInterval.plus(" + iPos + ") => "+ Interval.zeroInterval.plus(iPos)+ "\n");
     }
 
     @Test
     public void testMinus() {
-        System.out.println("testing minus()...");
+        System.out.println("#-- Testing Minus --#");
 
         //Nai Ergebnisse
         assertFalse(nai.equals(Int(Interval.NEGATIVE_INFINITY).minus(Int(Interval.NEGATIVE_INFINITY))));
@@ -210,11 +231,14 @@ public class IntervalTest {
         assertFalse(iNegPos.minus(Interval.NaI).equals(Interval.NaI));
         assertEquals(iNeg.minus(Interval.zeroInterval), iNeg);
         assertEquals(Interval.zeroInterval.minus(iPos), iNeg);
+        
+        System.out.println(iPos + ".minus(" + iNeg + ") => " + iPos.minus(iNeg));
+        System.out.println("Interval.zeroInterval.minus(" + iPos + ") => " + Interval.zeroInterval.minus(iPos) + "\n");
     }
 
     @Test
     public void testMul() {
-        System.out.println("testing mul()...");
+        System.out.println("#-- Testing Multi --#");
 
         //NaI-Ergebnisse
         assertFalse(nai.equals(Int(0.0).multi(Int(Interval.POSITIVE_INFINITY))));
@@ -255,12 +279,16 @@ public class IntervalTest {
         //assertEquals(iNeg.multi(Interval.zeroInterval), Interval.zeroInterval);				 		funktioniert, aber in Java scheinbar 0 != -0
         assertEquals(Interval.zeroInterval.multi(iPos), Interval.zeroInterval);
         assertFalse(Interval.zeroInterval.multi(Interval.realInterval).equals( Interval.NaI));
+     
         
+        System.out.println(real + ".multi(" + real + ") => " + real.multi(real));
+        System.out.println(iPos + ".multi(" + iNeg + ") => " + iPos.multi(iNeg));
+        System.out.println(iNeg + ".multi(Interval.oneInterval) => " + iNeg.multi(Interval.oneInterval) + "\n");
     }
 
     @Test
     public void testDiv() {
-        System.out.println("testing div()...");
+        System.out.println("#-- Testing Div --#");
 
         //NaI Ergebnisse
         assertFalse(nai.equals(Int(Interval.POSITIVE_INFINITY).div(Int(Interval.POSITIVE_INFINITY))));
@@ -307,6 +335,10 @@ public class IntervalTest {
         assertEquals(iNeg.div(Interval.zeroInterval), Interval.realInterval);
         assertEquals(Interval.zeroInterval.div(iPos), Interval.zeroInterval);
         assertFalse(Interval.zeroInterval.div(Interval.realInterval).equals(Interval.NaI));
+        
+        System.out.println(iNeg + ".div(Interval.oneInterval) => " + iNeg.div(Interval.oneInterval));
+        System.out.println(iPos + ".div(" + iNeg + ") => " + iPos.div(iNeg));
+        System.out.println(nai + ".div(" + nai + ") => " + nai.div(nai) + "\n");
     }
 
     private Interval Int(double a, double b) {
@@ -363,6 +395,7 @@ public class IntervalTest {
 
     @Test
     public void testUnion() {
+        System.out.println("#-- Testing Union --#");
         double a = 1d;
         double b = 2d;
         double c = 3d;
@@ -388,12 +421,14 @@ public class IntervalTest {
 
         //union(union(A, B), C) = union(A, union(B, C))
         assertTrue(i1.union(i2).union(i3).equals(i1.union(i2.union(i3))));
-
+        
+        System.out.println(i1 + ".union(" + i2 + ") => " + i1.union(i2));
+        System.out.println(i2 + ".union(" + i3 + ") => " + i2.union(i3) + "\n");
     }
 
     @Test
     public void testIntersection() {
-
+        System.out.println("#-- Testing Intersection --#");
         double a = 1d;
         double b = 2d;
         double c = 3d;
@@ -410,8 +445,6 @@ public class IntervalTest {
         //intersection(union(A, C), union(B, C)) = union(C, intersection(A, B))
          assertFalse(i1.union(i3).intersection(i2.union(i3)).equals(i3.union(i1.intersection(i2))));
 
-        System.out.println(i1 + ".union(" + i2 + ") => " + i1.union(i2));
-        System.out.println(i2 + ".union(" + i3 + ") => " + i2.union(i3));
         System.out.println(i1.union(i2) + ".intersection(" + i2.union(i3) + ") => " + i1.union(i2).intersection(i2.union(i3)));
         System.out.println(i3 + ".union(" + i1 + ".intersection( " + i2 + " )) => " + i3 + ".union(" + i1.intersection(i2) + " ) => " + i3.union(i1.intersection(i2)));
         
@@ -430,7 +463,7 @@ public class IntervalTest {
 
         //intersection(intersection(A, B), C) = intersection(A, intersection(B, C))
         System.out.println(i3 + ".intersection(" + i1 + ".intersection(" + i2 + ")) => " + i3 + ".intersection(" + i1.intersection(i2 ) + ") => " + i3.intersection(i1.intersection(i2)));
-        System.out.println(i1 + ".intersection(" + i2 + ".intersection(" + i3 + ")) => " + i1 + ".intersection(" + i2.intersection(i3) + ") => " + i1.intersection(i2.intersection(i3)));
+        System.out.println(i1 + ".intersection(" + i2 + ".intersection(" + i3 + ")) => " + i1 + ".intersection(" + i2.intersection(i3) + ") => " + i1.intersection(i2.intersection(i3)) + "\n");
         
        assertFalse(i3.intersection(i1.intersection(i2)).equals(i1.intersection(i2.intersection(i3))));
 
@@ -445,6 +478,7 @@ public class IntervalTest {
 
     @Test
     public void testDifference() {
+        System.out.println("#-- Testing Difference --#");
         double a = 1d;
         double b = 2d;
         double c = 3d;
@@ -458,9 +492,7 @@ public class IntervalTest {
         assertFalse(nai.difference(i1).equals(nai));
         assertFalse(i1.difference(nai).equals(nai));
 
-        //difference(realInterval, [a, b]) = difference([a, b], realInterval) = NaI
-        System.out.println(real + ".difference(" + i1 + ") => " + real.difference(i1));
-        System.out.println(i1 + ".difference(" + real + ") => " + i1.difference(real));
+        //difference(realInterval, [a, b]) = difference([a, b], realInterval) = NaI       
         assertFalse(real.difference(i1).equals(i1.difference(real)));
         assertFalse(real.difference(i1).equals(nai));
         assertFalse(i1.difference(real).equals(nai));
@@ -471,7 +503,8 @@ public class IntervalTest {
         //difference(A, intersection(B, C)) = union(difference(A, B), difference(A, C))
         assertTrue(i1.difference(i2.intersection(i3)).equals(i1.difference(i2).union(i1.difference(i3))));
 
-
+        System.out.println(real + ".difference(" + i1 + ") => " + real.difference(i1));
+        System.out.println(i1 + ".difference(" + real + ") => " + i1.difference(real) + "\n");
     }
 
            @Test
