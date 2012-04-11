@@ -110,7 +110,7 @@ public class IntervalTest {
         assertTrue(i1.contains(i1));
 
         //contains(realInterval, [a, b]) = contains([a,b], realInterval) = true   
-        assertTrue(real.contains(i1).equals(i1.contains(real)));
+        assertFalse(real.contains(i1).equals(i1.contains(real)));
 
         //contains(NaI, i1) = contains(i1, NaI) = false
         assertTrue(nai.contains(i1).equals(i1.contains(nai)));

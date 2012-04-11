@@ -232,7 +232,7 @@ public class NormalInterval implements Interval{
         if (this.getLowerBound() <= other.getLowerBound() && other.getLowerBound() <= this.getUpperBound() && this.getUpperBound() <= other.getUpperBound()) {
             a = this.getLowerBound();
             b = other.getLowerBound();
-        } else if (other.getLowerBound() <= this.getLowerBound() && this.getLowerBound() <= other.getLowerBound() && other.getUpperBound() <= this.getUpperBound()) {
+        } else if (other.getLowerBound() <= this.getLowerBound() && this.getLowerBound() <= other.getUpperBound() && other.getUpperBound() <= this.getUpperBound()) {
             a = other.getUpperBound();
             b = this.getUpperBound();
         } else if ((other.getUpperBound() < this.getLowerBound()) || (this.getUpperBound() < other.getLowerBound())) {
@@ -252,7 +252,7 @@ public class NormalInterval implements Interval{
        if (other == null || this == Interval.NaI || other == Interval.NaI  ) {
             return false;
         }
-        if (this.getUpperBound() <= other.getUpperBound() && this.getLowerBound()<=other.getLowerBound()) {
+        if (this.getUpperBound() >= other.getUpperBound() && this.getLowerBound()<=other.getLowerBound()) {
             return true;
         }
         return false;

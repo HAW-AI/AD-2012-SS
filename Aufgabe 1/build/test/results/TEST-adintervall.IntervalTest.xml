@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="JMRotable" name="adintervall.IntervalTest" tests="32" time="1.03" timestamp="2012-04-11T09:58:53">
+<testsuite errors="0" failures="0" hostname="JMRotable" name="adintervall.IntervalTest" tests="32" time="1.014" timestamp="2012-04-11T10:26:24">
   <properties>
     <property name="default.javac.source" value="1.7" />
     <property name="file.encoding.pkg" value="sun.io" />
@@ -87,7 +87,7 @@
     <property name="libs.JAXB-ENDORSED.src" value="" />
     <property name="libs.hibernate-persistence.javadoc" value="" />
     <property name="libs.ejb3-persistence.classpath" value="C:\Program Files\NetBeans 7.1.1\java\modules\ext\hibernate\ejb3-persistence.jar" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner adintervall.IntervalTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\test\results\TEST-adintervall.IntervalTest.xml crashfile=C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\junitvmwatcher3506004838806480258.properties propsfile=C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\junit5766781192151216602.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner adintervall.IntervalTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\test\results\TEST-adintervall.IntervalTest.xml crashfile=C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\junitvmwatcher5307927958184465588.properties propsfile=C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\junit6721004105103197758.properties" />
     <property name="built-jar.properties" value="C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\built-jar.properties" />
     <property name="ant.file.type.ADIntervall-impl" value="file" />
     <property name="libs.junit.src" value="" />
@@ -284,29 +284,29 @@
     <property name="mkdist.disabled" value="false" />
     <property name="sun.arch.data.model" value="64" />
   </properties>
-  <testcase classname="adintervall.IntervalTest" name="get_bounds_test" time="0.016" />
+  <testcase classname="adintervall.IntervalTest" name="testFactory" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="testContains" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="testEquals" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="testLength" time="0.078" />
+  <testcase classname="adintervall.IntervalTest" name="testPlus" time="0.312" />
+  <testcase classname="adintervall.IntervalTest" name="testMinus" time="0.125" />
+  <testcase classname="adintervall.IntervalTest" name="testMul" time="0.14" />
+  <testcase classname="adintervall.IntervalTest" name="testDiv" time="0.031" />
   <testcase classname="adintervall.IntervalTest" name="testequalsnew" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="get_bounds_test" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="testIntersection" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="testDifference" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_lessEqual" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_greaterEqual" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pLessEqual" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="test_pGreater" time="0.016" />
-  <testcase classname="adintervall.IntervalTest" name="test_pGreaterEqual" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="test_pGreater" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="test_pGreaterEqual" time="0.016" />
   <testcase classname="adintervall.IntervalTest" name="test_lessEqual_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_greater_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_greaterEqual_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pLessEqual_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pGreater_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pGreaterEqual_d" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="testFactory" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="testContains" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="testEquals" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="testLength" time="0.062" />
-  <testcase classname="adintervall.IntervalTest" name="testPlus" time="0.343" />
-  <testcase classname="adintervall.IntervalTest" name="testMinus" time="0.125" />
-  <testcase classname="adintervall.IntervalTest" name="testMul" time="0.187" />
-  <testcase classname="adintervall.IntervalTest" name="testDiv" time="0.031" />
   <testcase classname="adintervall.IntervalTest" name="testnewNai" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="testKomm" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="testUnion" time="0.0" />
@@ -316,7 +316,44 @@
   <testcase classname="adintervall.IntervalTest" name="test_less_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pLess_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_square" time="0.0" />
-  <system-out><![CDATA[#-- Testing Bounds --#
+  <system-out><![CDATA[#-- Testing Factory --#
+FactoryInterval.createInterval(NaN) => [ NaN , NaN ]
+FactoryInterval.createInterval(1d, 7d) => [ 1.0 , 7.0 ]
+FactoryInterval.createInterval(-inf, +inf) => [ -Infinity , Infinity ]
+
+#-- Testing Contains --#
+[ 1.0 , 2.0 ].contains([ 1.0 , 2.0 ]) => true
+[ 1.0 , 2.0 ].contains(3.0) => false
+[ -Infinity , Infinity ].contains(1.0) => true
+
+#-- Testing Equals --#
+[ 1.0 , 5.0 ].equals([ -5.0 , -1.0 ]) => false
+[ NaN , NaN ].equals([ NaN , NaN ]) => false
+[ 1.0 , 5.0 ].equals([ 1.0 , 5.0 ]) => true
+
+#-- Testing Length --#
+[ 5.0 , 5.0 ].length() => 0.0
+[ 1.0 , 5.0 ].length() => 4.0
+
+#-- Testing Plus --#
+[ 1.0 , 5.0 ].plus([ -5.0 , -1.0 ]) => [ -4.0 , 4.0 ]
+Interval.zeroInterval.plus([ 1.0 , 5.0 ]) => [ 1.0 , 5.0 ]
+
+#-- Testing Minus --#
+[ 1.0 , 5.0 ].minus([ -5.0 , -1.0 ]) => [ 2.0 , 10.0 ]
+Interval.zeroInterval.minus([ 1.0 , 5.0 ]) => [ -5.0 , -1.0 ]
+
+#-- Testing Multi --#
+[ -Infinity , Infinity ].multi([ -Infinity , Infinity ]) => [ -Infinity , Infinity ]
+[ 1.0 , 5.0 ].multi([ -5.0 , -1.0 ]) => [ -25.0 , -1.0 ]
+[ -5.0 , -1.0 ].multi(Interval.oneInterval) => [ -5.0 , -1.0 ]
+
+#-- Testing Div --#
+[ -5.0 , -1.0 ].div(Interval.oneInterval) => [ -5.0 , -1.0 ]
+[ 1.0 , 5.0 ].div([ -5.0 , -1.0 ]) => [ -5.0 , -0.2 ]
+[ NaN , NaN ].div([ NaN , NaN ]) => [ NaN , NaN ]
+
+#-- Testing Bounds --#
 [ -5.0 , 5.0 ].getLowerBound() => -5.0 == -5.0
 [ -5.0 , 5.0 ].getUpperBound() => 5.0 == 5.0
 
@@ -378,43 +415,6 @@
 #-- Testing ProbablyGreaterEqual double --#
 [ 1.0 , 3.0 ].pGreaterEqual(1.0) => true
 [ 1.0 , 3.0 ].pGreaterEqual(4.0) => false
-
-#-- Testing Factory --#
-FactoryInterval.createInterval(NaN) => [ NaN , NaN ]
-FactoryInterval.createInterval(1d, 7d) => [ 1.0 , 7.0 ]
-FactoryInterval.createInterval(-inf, +inf) => [ -Infinity , Infinity ]
-
-#-- Testing Contains --#
-[ 1.0 , 2.0 ].contains([ 1.0 , 2.0 ]) => true
-[ 1.0 , 2.0 ].contains(3.0) => false
-[ -Infinity , Infinity ].contains(1.0) => true
-
-#-- Testing Equals --#
-[ 1.0 , 5.0 ].equals([ -5.0 , -1.0 ]) => false
-[ NaN , NaN ].equals([ NaN , NaN ]) => false
-[ 1.0 , 5.0 ].equals([ 1.0 , 5.0 ]) => true
-
-#-- Testing Length --#
-[ 5.0 , 5.0 ].length() => 0.0
-[ 1.0 , 5.0 ].length() => 4.0
-
-#-- Testing Plus --#
-[ 1.0 , 5.0 ].plus([ -5.0 , -1.0 ]) => [ -4.0 , 4.0 ]
-Interval.zeroInterval.plus([ 1.0 , 5.0 ]) => [ 1.0 , 5.0 ]
-
-#-- Testing Minus --#
-[ 1.0 , 5.0 ].minus([ -5.0 , -1.0 ]) => [ 2.0 , 10.0 ]
-Interval.zeroInterval.minus([ 1.0 , 5.0 ]) => [ -5.0 , -1.0 ]
-
-#-- Testing Multi --#
-[ -Infinity , Infinity ].multi([ -Infinity , Infinity ]) => [ -Infinity , Infinity ]
-[ 1.0 , 5.0 ].multi([ -5.0 , -1.0 ]) => [ -25.0 , -1.0 ]
-[ -5.0 , -1.0 ].multi(Interval.oneInterval) => [ -5.0 , -1.0 ]
-
-#-- Testing Div --#
-[ -5.0 , -1.0 ].div(Interval.oneInterval) => [ -5.0 , -1.0 ]
-[ 1.0 , 5.0 ].div([ -5.0 , -1.0 ]) => [ -5.0 , -0.2 ]
-[ NaN , NaN ].div([ NaN , NaN ]) => [ NaN , NaN ]
 
 #-- Testing NaI != NaI --#
 [ NaN , NaN ].equals([ NaN , NaN ]) => false
