@@ -359,6 +359,7 @@ public class IntervalTest {
 
     @Test
     public void testequalsnew() {
+        
         Interval i1 = FactoryInterval.createInterval(1.0, 2.0);
         Interval i2 = FactoryInterval.createInterval(1.0, 2.0);
         Interval i3 = FactoryInterval.createInterval(1.0, 2.0);
@@ -368,17 +369,22 @@ public class IntervalTest {
         assertTrue(i2.equals(i1));
         assertTrue(i1.equals(i2) == i2.equals(i1));
         assertTrue((i1.equals(i2) && i2.equals(i3)) == i1.equals(i3));
-
-
     }
 
     @Test
     public void testnewNai() {
+        System.out.println("#-- Testing NaI != NaI --#");
+        
         assertFalse(nai.equals(nai));
+        
+        System.out.println(nai + ".equals(" + nai + ") => " + nai.equals(nai) + "\n");
     }
+    
 
     @Test
     public void testKomm() {
+        System.out.println("#-- Testing Kommutativität --#");
+        
         //Test der KommutativitÃ¤t
         double a = 1d;
         double b = 2d;
@@ -391,6 +397,9 @@ public class IntervalTest {
 
         assertTrue(i1.plus(b).equals(i1.plusKom(b)));
         assertTrue(i1.multi(b).equals(i1.multiKom(b)));
+        
+        System.out.println(i1 + ".plus(" + b + ") => " + i1.plus(b) + " == " + i1.plusKom(b) + " <= " + i1 + ".plusKom(" + b + ")");
+        System.out.println(i1 + ".multi(" + b + ") => " + i1.multi(b) + " == " + i1.multiKom(b) + " <= " + i1 + ".multiKom(" + b + ")\n");
     }
 
     @Test
@@ -503,32 +512,47 @@ public class IntervalTest {
         //difference(A, intersection(B, C)) = union(difference(A, B), difference(A, C))
         assertTrue(i1.difference(i2.intersection(i3)).equals(i1.difference(i2).union(i1.difference(i3))));
 
+        System.out.println(i1 + ".difference(" + i2.intersection(i3) + ") => " + i1.difference(i2.intersection(i3)));
+        System.out.println(Int(1d, 5d) + ".difference(" + Int(3d, 5d) + ") => " + Int(1d, 5d).difference(Int(3d, 5d)));
+        
         System.out.println(real + ".difference(" + i1 + ") => " + real.difference(i1));
         System.out.println(i1 + ".difference(" + real + ") => " + i1.difference(real) + "\n");
     }
 
            @Test
     public void test_less() {
+        System.out.println("#-- Testing Less --#");
         assertFalse(nai.less(i1));
         assertFalse(i1.less(nai));
         assertTrue(i1.less(i2));
         assertFalse(i3.less(i2));
         assertFalse(i4.less(i1));
         assertFalse(i1.less(i1));
+        
+        System.out.println(i1 + ".less(" + i2 + ") => " + i1.less(i2));
+        System.out.println(i3 + ".less(" + i2 + ") => " + i3.less(i2) + "\n");
+       
 }
     
     @Test
     public void test_lessEqual() {
+        System.out.println("#-- Testing LessEqual --#");
         assertFalse(nai.lessEqual(i1));
         assertFalse(i1.lessEqual(nai));
         assertTrue(i3.lessEqual(i2));
         assertFalse(i4.lessEqual(i1));
         assertFalse(i1.lessEqual(i1));
         assertFalse(i5.lessEqual(i6));
+        
+        System.out.println(i1 + ".lessEqual(" + nai + ") => " + i1.less(nai));
+        System.out.println(i3 + ".lessEqual(" + i2 + ") => " + i3.lessEqual(i2) + "\n");
+
     }
     
     @Test
     public void test_greater() {
+        System.out.println("#-- Testing Greater --#");
+        
         assertFalse(nai.greater(i1));
         assertFalse(i1.greater(nai));
         assertFalse(i1.greater(i2));
@@ -536,10 +560,15 @@ public class IntervalTest {
         assertFalse(i1.greater(i6));
         assertFalse(i6.greater(i1));
         assertFalse(i1.greater(i1));
+        
+        System.out.println(i2 + ".greater(" + i1 + ") => " + i2.greater(i1));
+        System.out.println(i1 + ".greater(" + i6 + ") => " + i1.greater(i6) + "\n");
     }
     
     @Test
     public void test_greaterEqual() {
+        System.out.println("#-- Testing GreaterEqual --#");
+        
         assertFalse(nai.greaterEqual(i1));
         assertFalse(i1.greaterEqual(nai));
         assertFalse(i1.greaterEqual(i2));
@@ -547,10 +576,16 @@ public class IntervalTest {
         assertFalse(i1.greaterEqual(i6));
         assertTrue(i6.greaterEqual(i1));
         assertFalse(i1.greaterEqual(i1));
+        
+        System.out.println(i6 + ".greaterEqual(" + i1 + ") => " + i6.greaterEqual(i1));
+        System.out.println(i1 + ".greaterEqual(" + i2 + ") => " + i1.greaterEqual(i2) + "\n");
+        
     }
     
     @Test
     public void test_pLess() {
+        System.out.println("#-- Testing ProbablyLess --#");
+        
         assertFalse(nai.pLess(i1));
         assertFalse(i1.pLess(nai));
         assertTrue(i1.pLess(i2));
@@ -558,10 +593,16 @@ public class IntervalTest {
         assertTrue(i1.pLess(i6));
         assertFalse(i6.pLess(i1));
         assertTrue(i1.pLess(i1));
+        
+        System.out.println(i6 + ".pLess(" + i1 + ") => " + i6.pLess(i1));
+        System.out.println(i1 + ".pLess(" + i6 + ") => " + i1.pLess(i6));
+        System.out.println(i1 + ".pLess(" + i2 + ") => " + i1.pLess(i2) + "\n");
     }
     
     @Test
     public void test_pLessEqual() {
+        System.out.println("#-- Testing ProbablyLessEqual --#");
+        
         assertFalse(nai.pLessEqual(i1));
         assertFalse(i1.pLessEqual(nai));
         assertTrue(i1.pLessEqual(i2));
@@ -569,10 +610,16 @@ public class IntervalTest {
         assertTrue(i1.pLessEqual(i6));
         assertTrue(i6.pLessEqual(i1));
         assertTrue(i1.pLessEqual(i1));
+        
+        System.out.println(i6 + ".pLessEqual(" + i1 + ") => " + i6.pLessEqual(i1));
+        System.out.println(i1 + ".pLessEqual(" + nai + ") => " + i1.pLessEqual(nai));
+        System.out.println(i1 + ".pLessEqual(" + i2 + ") => " + i1.pLessEqual(i2) + "\n");
     }
     
     @Test
     public void test_pGreater() {
+        System.out.println("#-- Testing ProbablyGreater --#");
+        
         assertFalse(nai.pGreater(i1));
         assertFalse(i1.pGreater(nai));
         assertFalse(i1.pGreater(i2));
@@ -580,10 +627,17 @@ public class IntervalTest {
         assertFalse(i1.pGreater(i6));
         assertTrue(i6.pGreater(i1));
         assertTrue(i1.pGreater(i1));
+
+        System.out.println(i2 + ".pGreater(" + i1 + ") => " + i2.pGreater(i1));
+        System.out.println(i6 + ".pGreater(" + i1 + ") => " + i6.pGreater(i1));
+        System.out.println(i1 + ".pGreater(" + i2 + ") => " + i1.pGreater(i2) + "\n");
+    
     }
     
     @Test
     public void test_pGreaterEqual() {
+        System.out.println("#-- Testing ProbablyGreaterEqual --#");
+        
         assertFalse(nai.pGreaterEqual(i1));
         assertFalse(i1.pGreaterEqual(nai));
         assertFalse(i1.pGreaterEqual(i2));
@@ -591,10 +645,16 @@ public class IntervalTest {
         assertTrue(i1.pGreaterEqual(i6));
         assertTrue(i6.pGreaterEqual(i1));
         assertTrue(i1.pGreaterEqual(i1));
+        
+        System.out.println(i2 + ".pGreaterEqual(" + i1 + ") => " + i2.pGreaterEqual(i1));
+        System.out.println(i6 + ".pGreaterEqual(" + i1 + ") => " + i6.pGreaterEqual(i1));
+        System.out.println(i1 + ".pGreaterEqual(" + i2 + ") => " + i1.pGreaterEqual(i2) + "\n");
     }
     
     @Test
     public void test_less_d() {
+        System.out.println("#-- Testing Less double --#");
+        
         assertFalse(nai.less(d1));
         assertFalse(i3.less(nan));
         assertFalse(i3.less(d2));
@@ -602,10 +662,15 @@ public class IntervalTest {
         assertFalse(i3.less(d3));
         assertFalse(i3.less(d0));
         assertTrue(i3.less(d4));
+        
+        System.out.println(i3 + ".less(" + d4 + ") => " + i3.less(d4));
+        System.out.println(i3 + ".less(" + d1 + ") => " + i3.less(d1) + "\n");
     }
     
     @Test
     public void test_lessEqual_d() {
+        System.out.println("#-- Testing LessEqual double --#");
+        
         assertFalse(nai.lessEqual(d1));
         assertFalse(i3.lessEqual(nan));
         assertFalse(i3.lessEqual(d2));
@@ -613,10 +678,15 @@ public class IntervalTest {
         assertTrue(i3.lessEqual(d3));
         assertFalse(i3.lessEqual(d0));
         assertTrue(i3.lessEqual(d4));
+        
+        System.out.println(i3 + ".lessEqual(" + d3 + ") => " + i3.lessEqual(d3));
+        System.out.println(i3 + ".lessEqual(" + d1 + ") => " + i3.lessEqual(d1) + "\n");
     }
     
     @Test
     public void test_greater_d() {
+        System.out.println("#-- Testing Greater double --#");
+        
         assertFalse(nai.greater(d1));
         assertFalse(i3.greater(nan));
         assertFalse(i3.greater(d2));
@@ -624,10 +694,15 @@ public class IntervalTest {
         assertFalse(i3.greater(d3));
         assertTrue(i3.greater(d0));
         assertFalse(i3.greater(d4));
+        
+        System.out.println(i3 + ".greater(" + d0 + ") => " + i3.greater(d0));
+        System.out.println(i3 + ".greater(" + d4 + ") => " + i3.greater(d4) + "\n");
     }
     
     @Test
     public void test_greaterEqual_d() {
+        System.out.println("#-- Testing GreaterEqual double --#");
+        
         assertFalse(nai.greaterEqual(d1));
         assertFalse(i3.greaterEqual(nan));
         assertFalse(i3.greaterEqual(d2));
@@ -635,10 +710,15 @@ public class IntervalTest {
         assertFalse(i3.greaterEqual(d3));
         assertTrue(i3.greaterEqual(d0));
         assertFalse(i3.greaterEqual(d4));
+        
+        System.out.println(i3 + ".greaterEqual(" + d1 + ") => " + i3.greaterEqual(d1));
+        System.out.println(i3 + ".greaterEqual(" + d4 + ") => " + i3.greaterEqual(d4) + "\n");
     }
     
     @Test
     public void test_pLess_d() {
+        System.out.println("#-- Testing ProbablyLess double --#");
+        
         assertFalse(nai.pLess(d1));
         assertFalse(i3.pLess(nan));
         assertTrue(i3.pLess(d2));
@@ -646,10 +726,15 @@ public class IntervalTest {
         assertTrue(i3.pLess(d3));
         assertFalse(i3.pLess(d0));
         assertTrue(i3.pLess(d4));
+        
+        System.out.println(i3 + ".pLess(" + d3 + ") => " + i3.pLess(d3));
+        System.out.println(i3 + ".pLess(" + d0 + ") => " + i3.pLess(d0) + "\n");
     }
     
     @Test
     public void test_pLessEqual_d() {
+        System.out.println("#-- Testing ProbablyLessEqual double --#");
+        
         assertFalse(nai.pLessEqual(d1));
         assertFalse(i3.pLessEqual(nan));
         assertTrue(i3.pLessEqual(d2));
@@ -657,10 +742,15 @@ public class IntervalTest {
         assertTrue(i3.pLessEqual(d3));
         assertFalse(i3.pLessEqual(d0));
         assertTrue(i3.pLessEqual(d4));
+        
+        System.out.println(i3 + ".pLessEqual(" + d2 + ") => " + i3.pLessEqual(d2));
+        System.out.println(i3 + ".pLessEqual(" + d0 + ") => " + i3.pLessEqual(d0) + "\n");
     }
     
     @Test
     public void test_pGreater_d() {
+        System.out.println("#-- Testing ProbablyGreater double --#");
+        
         assertFalse(nai.pGreater(d1));
         assertFalse(i3.pGreater(nan));
         assertTrue(i3.pGreater(d2));
@@ -668,10 +758,15 @@ public class IntervalTest {
         assertFalse(i3.pGreater(d3));
         assertTrue(i3.pGreater(d0));
         assertFalse(i3.pGreater(d4));
+        
+        System.out.println(i3 + ".pGreater(" + d2 + ") => " + i3.pGreater(d2));
+        System.out.println(i3 + ".pGreater(" + d4 + ") => " + i3.pGreater(d4) + "\n");
     }
     
     @Test
     public void test_pGreaterEqual_d() {
+        System.out.println("#-- Testing ProbablyGreaterEqual double --#");
+        
         assertFalse(nai.pGreaterEqual(d1));
         assertFalse(i3.pGreaterEqual(nan));
         assertTrue(i3.pGreaterEqual(d2));
@@ -679,10 +774,15 @@ public class IntervalTest {
         assertTrue(i3.pGreaterEqual(d3));
         assertTrue(i3.pGreaterEqual(d0));
         assertFalse(i3.pGreaterEqual(d4));
+        
+        System.out.println(i3 + ".pGreaterEqual(" + d1 + ") => " + i3.pGreaterEqual(d1));
+        System.out.println(i3 + ".pGreaterEqual(" + d4 + ") => " + i3.pGreaterEqual(d4) + "\n");
     }
     
     @Test
     public void test_square() {
+        System.out.println("#-- Testing Square --#");
+        
         assertFalse(nai.square().equals(nai));
         assertEquals(zero.square(), zero);
         assertEquals(i7.square(), i8);
@@ -691,6 +791,11 @@ public class IntervalTest {
         assertEquals(i11.square(), i8);
         assertEquals(i12.square(), i8);
         assertEquals(i13.square(), i10);
+        
+        System.out.println(one + ".square() => " + one.square());
+        System.out.println(i9 + ".square() => " + i9.square());
+        System.out.println(i7 + ".square() => " + i7.square());
+        System.out.println(zero + ".square() => " + zero.square() + "\n");
     }
 
     
