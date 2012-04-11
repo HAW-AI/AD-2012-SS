@@ -33,9 +33,7 @@ public class NormalInterval implements Interval{
 
     @Override
     public Boolean contains(double value) {
-        if (value != value) {
-            return false;
-        }
+        if(isNaN(value)) return false;
         return this.lowerbound <= value && value <= this.upperbound;
     }
 
@@ -133,7 +131,14 @@ public class NormalInterval implements Interval{
     }
     
     @Override
-    public boolean equals(Object o){
+    public boolean notEquals(Object o)
+    {
+        return !this.equals(o);
+    }
+    
+    @Override
+    public boolean equals(Object o)
+    {
        
        if(this == Interval.NaI || ((Interval)o) == Interval.NaI)
        {
@@ -146,8 +151,6 @@ public class NormalInterval implements Interval{
         if (o == null) {
             return false;
         }
-        
-        
         
         if (o instanceof Double) {
             return (this.lowerbound == (double) o && this.upperbound == (double) o);
@@ -272,56 +275,56 @@ public class NormalInterval implements Interval{
 
     @Override
     public Boolean less(Interval other) {
-        if (this == Interval.NaI || other == Interval.NaI)
+        if (other == null || this == Interval.NaI || other == Interval.NaI)
                 return false;
         return this.upperbound < other.getLowerBound();
     }
 
     @Override
     public Boolean lessEqual(Interval other) {
-        if (this == Interval.NaI || other == Interval.NaI)
+        if (other == null || this == Interval.NaI || other == Interval.NaI)
                 return false;
         return this.upperbound <= other.getLowerBound();
     }
 
     @Override
     public Boolean greater(Interval other) {
-        if (this == Interval.NaI || other == Interval.NaI)
+        if (other == null || this == Interval.NaI || other == Interval.NaI)
                 return false;
         return this.lowerbound > other.getUpperBound();
     }
 
     @Override
     public Boolean greaterEqual(Interval other) {
-        if (this == Interval.NaI || other == Interval.NaI)
+        if (other == null || this == Interval.NaI || other == Interval.NaI)
                 return false;
         return this.lowerbound >= other.getUpperBound();
     }
 
     @Override
     public Boolean pLess(Interval other) {
-        if (this == Interval.NaI || other == Interval.NaI)
+        if (other == null || this == Interval.NaI || other == Interval.NaI)
                 return false;
         return this.lowerbound < other.getUpperBound();
     }
 
     @Override
     public Boolean pLessEqual(Interval other) {
-        if (this == Interval.NaI || other == Interval.NaI)
+        if (other == null || this == Interval.NaI || other == Interval.NaI)
                 return false;
         return this.lowerbound <= other.getUpperBound();
     }
 
     @Override
     public Boolean pGreater(Interval other) {
-        if (this == Interval.NaI || other == Interval.NaI)
+        if (other == null || this == Interval.NaI || other == Interval.NaI)
                 return false;
         return this.upperbound > other.getLowerBound();
     }
 
     @Override
     public Boolean pGreaterEqual(Interval other) {
-        if (this == Interval.NaI || other == Interval.NaI)
+        if (other == null || this == Interval.NaI || other == Interval.NaI)
                 return false;
         return this.upperbound >= other.getLowerBound();
     }

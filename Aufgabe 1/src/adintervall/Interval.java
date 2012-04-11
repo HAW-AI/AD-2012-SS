@@ -19,7 +19,9 @@ public interface Interval {
 
     @Override
     boolean equals(Object other);
-
+    
+    boolean notEquals(Object other);
+            
     double length();
 
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="JMRotable" name="adintervall.IntervalTest" tests="32" time="1.126" timestamp="2012-04-10T22:31:55">
+<testsuite errors="0" failures="0" hostname="JMRotable" name="adintervall.IntervalTest" tests="32" time="1.045" timestamp="2012-04-11T09:17:58">
   <properties>
     <property name="default.javac.source" value="1.7" />
     <property name="file.encoding.pkg" value="sun.io" />
@@ -87,7 +87,7 @@
     <property name="libs.JAXB-ENDORSED.src" value="" />
     <property name="libs.hibernate-persistence.javadoc" value="" />
     <property name="libs.ejb3-persistence.classpath" value="C:\Program Files\NetBeans 7.1.1\java\modules\ext\hibernate\ejb3-persistence.jar" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner adintervall.IntervalTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\test\results\TEST-adintervall.IntervalTest.xml crashfile=C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\junitvmwatcher4042027188331098864.properties propsfile=C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\junit3257400384706943449.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner adintervall.IntervalTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\test\results\TEST-adintervall.IntervalTest.xml crashfile=C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\junitvmwatcher7600552025313819518.properties propsfile=C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\junit1783206424951819278.properties" />
     <property name="built-jar.properties" value="C:\Users\jmenzel\Desktop\AD\AD-2012-SS\Aufgabe 1\build\built-jar.properties" />
     <property name="ant.file.type.ADIntervall-impl" value="file" />
     <property name="libs.junit.src" value="" />
@@ -284,37 +284,37 @@
     <property name="mkdist.disabled" value="false" />
     <property name="sun.arch.data.model" value="64" />
   </properties>
-  <testcase classname="adintervall.IntervalTest" name="testFactory" time="0.008" />
-  <testcase classname="adintervall.IntervalTest" name="testContains" time="0.001" />
-  <testcase classname="adintervall.IntervalTest" name="testEquals" time="0.002" />
-  <testcase classname="adintervall.IntervalTest" name="testLength" time="0.075" />
-  <testcase classname="adintervall.IntervalTest" name="testPlus" time="0.372" />
-  <testcase classname="adintervall.IntervalTest" name="testMinus" time="0.148" />
-  <testcase classname="adintervall.IntervalTest" name="testMul" time="0.166" />
-  <testcase classname="adintervall.IntervalTest" name="testDiv" time="0.029" />
-  <testcase classname="adintervall.IntervalTest" name="testnewNai" time="0.001" />
+  <testcase classname="adintervall.IntervalTest" name="testFactory" time="0.015" />
+  <testcase classname="adintervall.IntervalTest" name="testContains" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="testEquals" time="0.016" />
+  <testcase classname="adintervall.IntervalTest" name="testLength" time="0.062" />
+  <testcase classname="adintervall.IntervalTest" name="testPlus" time="0.359" />
+  <testcase classname="adintervall.IntervalTest" name="testMinus" time="0.141" />
+  <testcase classname="adintervall.IntervalTest" name="testMul" time="0.202" />
+  <testcase classname="adintervall.IntervalTest" name="testDiv" time="0.032" />
+  <testcase classname="adintervall.IntervalTest" name="testnewNai" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="testKomm" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="testUnion" time="0.001" />
+  <testcase classname="adintervall.IntervalTest" name="testUnion" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_less" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="test_greater" time="0.001" />
-  <testcase classname="adintervall.IntervalTest" name="test_pLess" time="0.001" />
+  <testcase classname="adintervall.IntervalTest" name="test_greater" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="test_pLess" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_less_d" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="test_pLess_d" time="0.001" />
-  <testcase classname="adintervall.IntervalTest" name="test_square" time="0.001" />
-  <testcase classname="adintervall.IntervalTest" name="testequalsnew" time="0.001" />
-  <testcase classname="adintervall.IntervalTest" name="get_bounds_test" time="0.001" />
-  <testcase classname="adintervall.IntervalTest" name="testIntersection" time="0.002" />
-  <testcase classname="adintervall.IntervalTest" name="testDifference" time="0.002" />
-  <testcase classname="adintervall.IntervalTest" name="test_lessEqual" time="0.001" />
+  <testcase classname="adintervall.IntervalTest" name="test_pLess_d" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="test_square" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="testequalsnew" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="get_bounds_test" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="testIntersection" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="testDifference" time="0.0" />
+  <testcase classname="adintervall.IntervalTest" name="test_lessEqual" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_greaterEqual" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="test_pLessEqual" time="0.001" />
+  <testcase classname="adintervall.IntervalTest" name="test_pLessEqual" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pGreater" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pGreaterEqual" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_lessEqual_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_greater_d" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="test_greaterEqual_d" time="0.001" />
+  <testcase classname="adintervall.IntervalTest" name="test_greaterEqual_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pLessEqual_d" time="0.0" />
-  <testcase classname="adintervall.IntervalTest" name="test_pGreater_d" time="0.002" />
+  <testcase classname="adintervall.IntervalTest" name="test_pGreater_d" time="0.0" />
   <testcase classname="adintervall.IntervalTest" name="test_pGreaterEqual_d" time="0.0" />
   <system-out><![CDATA[#-- Testing Factory --#
 FactoryInterval.createInterval(NaN) => [ NaN , NaN ]
